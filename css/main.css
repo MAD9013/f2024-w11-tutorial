@@ -1,0 +1,756 @@
+/* CSS Custom Properties AKA Variables */
+:root {
+  /* Colors */
+  --color-primary: #222;
+  --color-primary--light: #333;
+  --color-primary--dark: #111;
+
+  --color-secondary: #777;
+  --color-secondary--light: #888;
+  --color-secondary--dark: #666;
+
+  --color-accent: #bbb;
+  --color-accent--light: #ccc;
+  --color-accent--dark: #aaa;
+
+  --color-grey--100: hsl(0, 0%, 10%);
+  --color-grey--200: hsl(0, 0%, 20%);
+  --color-grey--300: hsl(0, 0%, 30%);
+  --color-grey--400: hsl(0, 0%, 40%);
+  --color-grey--500: hsl(0, 0%, 50%);
+  --color-grey--600: hsl(0, 0%, 60%);
+  --color-grey--700: hsl(0, 0%, 70%);
+  --color-grey--800: hsl(0, 0%, 80%);
+  --color-grey--900: hsl(0, 0%, 90%);
+
+  /* Fonts */
+  --font-primary: "Noto Sans", sans-serif;
+  --font-secondary: "Noto Serif", serif;
+
+  /* Sizing */
+  --container: 65em;
+  --container--text: 45em;
+
+  /* Standardization */
+  --transition: 0.2s;
+  --shadow: 0 0.25rem 0.75rem #0004;
+  --shadow--large: 0 0.5rem 1.5rem #0004;
+  --shadow--subtle: 0 0.125rem 0.5rem #0002;
+  --radius: 0.5em;
+}
+
+/*
+
+CSS Reset
+Adapted from: https://piccalil.li/blog/a-more-modern-css-reset/
+
+*/
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  color: var(--color-primary);
+  font-family: var(--font-primary);
+  line-height: 1.5;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+blockquote,
+ol,
+ul,
+dl,
+dd {
+  margin: 0 0 1.5rem;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: var(--color-accent--dark);
+}
+
+a:not([class]):hover,
+a:not([class]):focus-visible {
+  color: var(--color-accent);
+}
+
+/* Make images easier to work with */
+img,
+picture,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+svg {
+  fill: currentColor;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- Accessibility ---------- */
+
+/* ---------- Typography ---------- */
+
+/* Fonts */
+
+@font-face {
+  font-family: "Noto Sans";
+  src: url("../fonts/NotoSans-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Noto Sans";
+  src: url("../fonts/NotoSans-Italic.ttf");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Noto Sans";
+  src: url("../fonts/NotoSans-Bold.ttf");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Noto Sans";
+  src: url("../fonts/NotoSans-BoldItalic.ttf");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Noto Serif";
+  src: url("../fonts/NotoSerif-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Noto Serif";
+  src: url("../fonts/NotoSerif-Italic.ttf");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Noto Serif";
+  src: url("../fonts/NotoSerif-SemiBold.ttf");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Noto Serif";
+  src: url("../fonts/NotoSerif-SemiBoldItalic.ttf");
+  font-weight: 600;
+  font-style: italic;
+}
+
+/* Type Hierarchy */
+
+h1,
+.heading-1 {
+  font-size: 1.802rem;
+  font-family: var(--font-secondary);
+  line-height: 1.1;
+}
+
+h2,
+.heading-2 {
+  font-size: 1.602rem;
+  font-family: var(--font-secondary);
+  line-height: 1.2;
+}
+
+h3,
+.heading-3 {
+  font-size: 1.424rem;
+  margin-block-end: 0.75rem;
+  line-height: 1.3;
+  color: var(--color-blue);
+}
+
+h4,
+.heading-4 {
+  font-size: 1.266rem;
+  margin-block-end: 0;
+  text-transform: uppercase;
+}
+
+h5,
+.heading-5 {
+  font-size: 1.125rem;
+  border-block-end: 0.0625rem solid var(--color-blue);
+}
+
+h6 {
+  font-size: 1rem;
+  font-family: var(--font-secondary);
+}
+
+small,
+.small {
+  font-size: 0.889rem;
+}
+
+@media only screen and (min-width: 45em) {
+  html {
+    font-size: 110%;
+  }
+
+  h1,
+  .heading-1 {
+    font-size: 3.052rem;
+  }
+
+  h2,
+  .heading-2 {
+    font-size: 2.441rem;
+  }
+
+  h3,
+  .heading-3 {
+    font-size: 1.953rem;
+  }
+
+  h4,
+  .heading-4 {
+    font-size: 1.563rem;
+  }
+
+  h5,
+  .heading-5 {
+    font-size: 1.25rem;
+  }
+
+  small,
+  .small {
+    font-size: 0.8rem;
+  }
+}
+
+@media only screen and (min-width: 60em) {
+  html {
+    font-size: 120%;
+  }
+
+  h1,
+  .heading-1 {
+    font-size: 4.209rem;
+  }
+
+  h2,
+  .heading-2 {
+    font-size: 3.157rem;
+  }
+
+  h3,
+  .heading-3 {
+    font-size: 2.369rem;
+  }
+
+  h4,
+  .heading-4 {
+    font-size: 1.777rem;
+  }
+
+  h5,
+  .heading-5 {
+    font-size: 1.333rem;
+  }
+
+  small,
+  .small {
+    font-size: 0.75rem;
+  }
+}
+
+/* ---------- Layout ---------- */
+
+/* Containers */
+
+.container {
+  width: min(100%, var(--container));
+  margin: 0 auto;
+  padding-inline-start: 1.5rem;
+  padding-inline-end: 1.5rem;
+}
+
+.container--text {
+  width: min(100%, var(--container--text));
+}
+
+.container--grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
+}
+
+.container--grid > * {
+  grid-column: 1 / -1;
+}
+
+section {
+  padding: clamp(3rem, 10vw, 6rem) 0;
+}
+
+/* ---------- Patterns/Components ---------- */
+
+/* Button */
+.btn {
+  /* common styles */
+  display: inline-block;
+  padding: 0.55em 1.5em 0.5em;
+  background-color: var(--color-primary);
+  border: 0.125rem solid var(--color-primary);
+  color: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  text-align: center;
+  transition: all var(--transition);
+
+  /* link necessary styles */
+  text-decoration: none;
+
+  /* button necessary styles */
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+
+  &:is(:hover, :focus) {
+    background-color: var(--color-primary--dark);
+    border-color: var(--color-primary--dark);
+    color: #fff;
+  }
+}
+
+.btn--secondary {
+  background-color: var(--color-secondary);
+  border-color: var(--color-secondary);
+  color: var(--color-primary);
+  &:is(:hover, :focus) {
+    background-color: var(--color-secondary--dark);
+    border-color: var(--color-secondary--dark);
+    color: #fff;
+  }
+}
+
+/* ---------- Navbar ---------- */
+
+.navbar {
+  background-color: var(--color-primary);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+.navbar__headline {
+  font-size: clamp(1.266rem, 3vw, 1.777rem);
+  margin: 0;
+  display: block;
+}
+
+.navbar__logo {
+  color: #fff;
+  text-decoration: none;
+  transition: color var(--transition);
+  &:is(:hover, :focus) {
+    color: var(--color-secondary);
+  }
+}
+
+.navbar__nav {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 66.666vw;
+  height: 100vh;
+  height: 100dvh;
+  background-color: var(--color-primary--dark);
+  box-shadow: var(--shadow);
+  padding-block-start: 6.25rem;
+  translate: 100%;
+}
+
+.navbar__nav.open {
+  translate: 0;
+}
+
+.navbar__list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  font-size: 1.266rem;
+}
+
+.navbar__link {
+  display: block;
+  padding: 0.75rem 1.5rem;
+  text-align: right;
+  color: #fff;
+  text-decoration: none;
+  transition: color var(--transition), background-color var(--transition);
+
+  &:is(:hover, :focus) {
+    background-color: var(--color-secondary);
+  }
+}
+
+.navbar__btn-wrap {
+  padding: 1.5rem;
+  display: grid;
+}
+
+@media only screen and (min-width: 45em) {
+  .navbar .container {
+    padding: 0 1.5rem;
+  }
+
+  .navbar__nav {
+    position: unset;
+    top: unset;
+    right: unset;
+    width: unset;
+    height: unset;
+    background-color: unset;
+    box-shadow: unset;
+    padding-block-start: unset;
+    translate: unset;
+  }
+
+  .navbar__list {
+    font-size: unset;
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar__link {
+    padding: 1.5rem;
+    text-align: center;
+    &:is(:hover, :focus) {
+      background-color: transparent;
+      color: var(--color-secondary);
+    }
+  }
+
+  .navbar__btn-wrap {
+    padding: 0 0 0 1.5rem;
+    display: unset;
+  }
+}
+
+.toggle {
+  width: 2.5rem;
+  height: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background-color: transparent;
+}
+
+.toggle__line {
+  width: 100%;
+  height: 0.25rem;
+  background-color: #fff;
+  position: relative;
+}
+.toggle__line--top {
+  top: 0;
+}
+
+.toggle__line--bottom {
+  bottom: 0;
+}
+
+.open .toggle__line--top {
+  top: 50%;
+  translate: 0 -50%;
+  rotate: 45deg;
+}
+
+.open .toggle__line--middle {
+  opacity: 0;
+}
+
+.open .toggle__line--bottom {
+  bottom: 50%;
+  translate: 0 50%;
+  rotate: -45deg;
+}
+
+.click-to-close {
+  width: 100vw;
+  height: 100vh;
+  background-color: #0008;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.click-to-close.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+@media only screen and (min-width: 45em) {
+  .toggle,
+  .click-to-close {
+    display: none;
+  }
+}
+
+/* ---------- Banner ---------- */
+
+.banner {
+  color: #fff;
+}
+
+.banner .container {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+}
+
+.banner__content {
+  width: min(100%, 35rem);
+}
+
+.banner--hero {
+  background-image: url("../images/hero.jpg");
+  background-position: center;
+}
+
+.banner--callout {
+  background-color: var(--color-primary--light);
+}
+
+/* ---------- Card Group ---------- */
+
+.card-group__grid {
+  --cols: 1;
+  display: grid;
+  grid-template-columns: repeat(var(--cols), 1fr);
+  gap: 1.5rem;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.card-group__item {
+  display: flex;
+}
+
+@media only screen and (min-width: 45em) {
+  .card-group__grid {
+    --cols: 2;
+  }
+}
+
+@media only screen and (min-width: 60em) {
+  .card-group__grid {
+    --cols: 3;
+  }
+}
+
+/* ---------- Cards ---------- */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow--subtle);
+}
+
+.card__content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.5rem;
+}
+
+.card__title {
+  font-size: 1.266rem;
+}
+
+.card__text {
+  flex: 1;
+}
+
+@media only screen and (min-width: 45em) {
+  .card__title {
+    font-size: 1.563rem;
+  }
+}
+
+@media only screen and (min-width: 60em) {
+  .card__title {
+    font-size: 1.777rem;
+  }
+}
+
+/* ---------- Accordion ---------- */
+
+.accordion {
+  background-color: var(--color-grey--900);
+}
+
+.accordion__label {
+  font-size: 1.125rem;
+  margin-block-end: 1.5rem;
+
+  &:not(:first-of-type) {
+    padding-block-start: 1.5rem;
+    border-block-start: 0.0625rem solid var(--color-secondary);
+  }
+}
+
+.accordion__button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  text-align: left;
+
+  .material-symbols-outlined {
+    font-size: inherit;
+  }
+}
+
+@media only screen and (min-width: 45em) {
+  .accordion__label {
+    font-size: 1.25rem;
+  }
+}
+
+@media only screen and (min-width: 60em) {
+  .accordion__label {
+    font-size: 1.333rem;
+  }
+}
+
+/* ---------- Footer ---------- */
+
+.footer {
+  background-color: var(--color-primary);
+  color: #fff;
+  padding: 1.5rem 0;
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  small a {
+    color: var(--color-secondary);
+    &:is(:hover, :focus) {
+      color: var(--color-secondary--dark);
+    }
+  }
+}

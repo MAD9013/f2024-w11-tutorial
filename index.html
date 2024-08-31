@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>W11 - Color &amp; Accessibility</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;400;500;700;800&family=Roboto:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="container">
+        <h1 class="navbar__headline">
+          <a href="/" class="navbar__logo"> Color &amp; Accessibility </a>
+        </h1>
+        <nav id="nav" class="navbar__nav">
+          <ul class="navbar__list">
+            <li><a class="navbar__link" href="#">Nav Item</a></li>
+            <li><a class="navbar__link" href="#">Nav Item</a></li>
+            <li class="navbar__btn-wrap">
+              <a
+                class="btn btn--secondary"
+                href="https://mad9013.github.io/f2024/modules/week11/"
+                target="_blank"
+              >
+                Learn More
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <button class="toggle" data-target="nav">
+          <span class="toggle__line toggle__line--top"></span>
+          <span class="toggle__line toggle__line--middle"></span>
+          <span class="toggle__line toggle__line--bottom"></span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <header class="banner banner--hero">
+        <div class="container">
+          <div class="banner__content">
+            <h2 class="banner__title">Color Schemes &amp; Accessibility</h2>
+            <p>
+              Its important to make sure your websites follow accessibility
+              guidelines to make sure every user can use your website!
+            </p>
+          </div>
+        </div>
+      </header>
+
+      <section class="card-group">
+        <div class="container">
+          <h2>Resources</h2>
+          <ul class="card-group__grid">
+            <li class="card-group__item">
+              <div class="card">
+                <div class="card__img">
+                  <img
+                    src="./images/card-ui.jpg"
+                    alt="An iPhone displaying an app user interface."
+                  />
+                </div>
+                <div class="card__content">
+                  <h3 class="card__title">Color Usage in UI&nbsp;Design</h3>
+                  <p class="card__text">
+                    Some helpful tips for using colour in UI Design.
+                  </p>
+                  <a
+                    class="btn btn--secondary"
+                    href="https://uxdesign.cc/10-principles-for-color-usage-in-ui-design-65174b213004"
+                  >
+                    Learn More
+                  </a>
+                </div>
+              </div>
+            </li>
+            <li class="card-group__item">
+              <div class="card">
+                <div class="card__img">
+                  <img
+                    src="./images/card-checklist.jpg"
+                    alt="A phone on a notebook displaying a checklist."
+                  />
+                </div>
+                <div class="card__content">
+                  <h3 class="card__title">Accessibility Checklist</h3>
+                  <p class="card__text">
+                    A handy reference for key accessibility requirements.
+                  </p>
+                  <a
+                    class="btn btn--secondary"
+                    href="https://learn-the-web.algonquindesign.ca/topics/accessibility-checklist/"
+                  >
+                    Learn More
+                  </a>
+                </div>
+              </div>
+            </li>
+            <li class="card-group__item">
+              <div class="card">
+                <div class="card__img">
+                  <img
+                    src="./images/card-docs.jpg"
+                    alt="A screen showing a list of documentation topics."
+                  />
+                </div>
+                <div class="card__content">
+                  <h3 class="card__title">MDN Accessibility Documentation</h3>
+                  <p class="card__text">
+                    Mozilla's documentation for a wide range of accessibility
+                    learning.
+                  </p>
+                  <a
+                    class="btn btn--secondary"
+                    href="https://developer.mozilla.org/en-US/docs/Web/Accessibility"
+                  >
+                    Learn More
+                  </a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="accordion">
+        <div class="container container--text">
+          <h2>Frequently Asked Questions</h2>
+
+          <!--
+            This accordion is adapted from the Accordion Pattern
+            found here: https://www.w3.org/WAI/ARIA/apg/patterns/accordion/
+
+            This site has a number of great examples of common patterns
+            and shows how to properly implement accessibility features
+            and expected interactivity.
+          -->
+
+          <h3 class="accordion__label">
+            <button
+              type="button"
+              aria-expanded="false"
+              class="accordion__button"
+              aria-controls="accordion-1__content"
+              id="accordion-1__button"
+            >
+              Is accessibility really that important?
+              <i class="material-symbols-outlined" aria-hidden="true"
+                >expand_more</i
+              >
+            </button>
+          </h3>
+          <div
+            id="accordion-1__content"
+            role="region"
+            aria-labelledby="accordion-1__button"
+            class="accordion__panel"
+            hidden="true"
+          >
+            <p>
+              Yes! Accessibility makes sure that everyone who visits your
+              website will be able to use it effectively. This improves user
+              experience, treats every user equally, and goes a long way to user
+              retention.
+            </p>
+            <p>
+              It is also the law! The Government of Ontario (and many others)
+              require base level of web accessibility for all websites for
+              private businesses and not-for-profits with 50+ employees and all
+              public sector organizations. Learn more on the
+              <a href="https://www.ontario.ca/page/how-make-websites-accessible"
+                >ontario.ca</a
+              >
+              website.
+            </p>
+          </div>
+          <h3 class="accordion__label">
+            <button
+              type="button"
+              aria-expanded="false"
+              class="accordion__button"
+              aria-controls="accordion-2__content"
+              id="accordion-1__button"
+            >
+              Where can I find a list of all the ARIA attributes?
+              <i class="material-symbols-outlined" aria-hidden="true"
+                >expand_more</i
+              >
+            </button>
+          </h3>
+          <div
+            id="accordion-2__content"
+            role="region"
+            aria-labelledby="accordion-1__button"
+            class="accordion__panel"
+            hidden="true"
+          >
+            <p>
+              <a href="https://w3.org">w3.org</a> is the place to go for all
+              things accessibility, check out their
+              <a
+                href="https://www.w3.org/WAI/PF/aria-1.1/states_and_properties"
+              >
+                list of ARIA attributes</a
+              >
+              on this page at 6.4 Global States and Properties.
+            </p>
+          </div>
+          <h3 class="accordion__label">
+            <button
+              type="button"
+              aria-expanded="false"
+              class="accordion__button"
+              aria-controls="accordion-3__content"
+              id="accordion-3__button"
+            >
+              Where can I find those sweet accessibility extensions?
+              <i class="material-symbols-outlined" aria-hidden="true"
+                >expand_more</i
+              >
+            </button>
+          </h3>
+          <div
+            id="accordion-3__content"
+            role="region"
+            aria-labelledby="accordion-3__button"
+            class="accordion__panel"
+            hidden="true"
+          >
+            <ul>
+              <li>
+                <a href="https://wave.webaim.org/extension/">
+                  WAVE Web Accessibility Evaluation Tool
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://chrome.google.com/webstore/detail/web-developer/bfbameneiokkgbdmiekhjnmfkcnldhhm"
+                >
+                  Web Developer Extension Chrome
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://addons.mozilla.org/en-CA/firefox/addon/web-developer/"
+                >
+                  Web Developer Extension Firefox
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="banner banner--callout">
+        <div class="container container--text">
+          <div class="banner__content">
+            <h2>Good accessibility is good design</h2>
+            <p>
+              It doesn't matter how good your design or code may seem, if it
+              isn't accessible, you haven't done your job!
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <small>
+          Created for
+          <a href="https://mad9013.github.io/f2024/">MAD9013 course</a> and free
+          for any use.
+        </small>
+        <a
+          class="btn btn--secondary"
+          href="https://mad9013.github.io/f2024/modules/week11/"
+          target="_blank"
+        >
+          Week 11 Content
+        </a>
+      </div>
+    </footer>
+    <div class="click-to-close" data-toggle="nav"></div>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
