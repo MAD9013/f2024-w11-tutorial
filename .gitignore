@@ -1,3 +1,7 @@
+# Ignores auto-generated Finder styling files
 .DS_Store
-*.txt
+
+# Ignores my planning and helper files
+outline.md
 .prettierrc
+*.txt
