@@ -359,28 +359,51 @@ small,
 /* Containers */
 
 .container {
-  width: min(100%, var(--container));
+  --container-width: var(--container);
+  width: min(100%, var(--container-width));
   margin: 0 auto;
   padding-inline-start: 1.5rem;
   padding-inline-end: 1.5rem;
 }
 
 .container--text {
-  width: min(100%, var(--container--text));
+  --container-width: var(--container--text);
 }
 
 .container--grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 1.5rem;
-}
 
-.container--grid > * {
-  grid-column: 1 / -1;
+  > * {
+    grid-column: 1 / -1;
+  }
 }
 
 section {
   padding: clamp(3rem, 10vw, 6rem) 0;
+}
+
+/* ---------- Forms ---------- */
+
+label,
+.label {
+  display: block;
+  margin-block: 0 0.25rem;
+  font-weight: 600; 
+}
+
+input:where(
+  :not(
+    [type="radio"],
+    [type="checkbox"]
+  )
+) {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  border: 0.0625rem solid #ddd;
+  border-block-end-color: var(--color-blue);
 }
 
 /* ---------- Patterns/Components ---------- */
@@ -411,6 +434,10 @@ section {
     border-color: var(--color-primary--dark);
     color: #fff;
   }
+}
+
+.btn--flat {
+  box-shadow: none;
 }
 
 .btn--secondary {
@@ -731,6 +758,28 @@ section {
 @media only screen and (min-width: 60em) {
   .accordion__label {
     font-size: 1.333rem;
+  }
+}
+
+/* ---------- Newsletter ---------- */
+
+.newsletter {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  row-gap: 0.75rem;
+
+  h3 {
+    grid-column: 1 / -1;
+  }
+
+  input {
+    border-start-start-radius: var(--radius);
+    border-end-start-radius: var(--radius);
+  }
+
+  .btn {
+    border-start-start-radius: 0;
+    border-end-start-radius: 0;
   }
 }
 

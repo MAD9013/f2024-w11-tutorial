@@ -12,7 +12,8 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
-    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/main-complete.css" />
+    <script src="./js/main.js"></script>
   </head>
   <body>
     <ul class="skip-links">
@@ -72,7 +73,7 @@
           <h2>Resources</h2>
           <ul class="card-group__grid">
             <li class="card-group__item">
-              <div class="card">
+              <div class="card card--full-click">
                 <div class="card__img">
                   <img
                     src="./images/card-ui.jpg"
@@ -95,7 +96,7 @@
               </div>
             </li>
             <li class="card-group__item">
-              <div class="card">
+              <div class="card card--full-click">
                 <div class="card__img">
                   <img
                     src="./images/card-checklist.jpg"
@@ -118,7 +119,7 @@
               </div>
             </li>
             <li class="card-group__item">
-              <div class="card">
+              <div class="card card--full-click">
                 <div class="card__img">
                   <img
                     src="./images/card-docs.jpg"
@@ -276,6 +277,12 @@
               It doesn't matter how good your design or code may seem, if it
               isn't accessible, you haven't done your job!
             </p>
+            <form class="newsletter" action="/thank-you.html">
+              <h3 class="heading-5">Get the Accessible Design Newsletter!</h3>
+              <label class="srt" for="nl-email">Email</label>
+              <input type="email" name="nl-email" id="nl-email" placeholder="Email">
+              <button class="btn btn--secondary btn--flat" type="submit">Join Now</button>
+            </form>
           </div>
         </div>
       </section>
@@ -306,6 +313,5 @@
       </div>
     </footer>
     <div class="click-to-close" data-toggle="nav"></div>
-    <script src="./js/main.js"></script>
   </body>
 </html>

@@ -9,14 +9,34 @@ function init() {
       `[data-toggle="${target_id}"]`
     );
 
+    function open() {
+      toggle.classList.add("open");
+      target.classList.add("open");
+      click_to_close.classList.add("open");
+    }
+
+    function close() {
+      toggle.classList.remove("open");
+      target.classList.remove("open");
+      click_to_close.classList.remove("open");
+    }
+
     function updateState() {
-      toggle.classList.toggle("open");
-      target.classList.toggle("open");
-      click_to_close.classList.toggle("open");
+      if (toggle.classList.contains("open")) {
+        close();
+      } else {
+        open();
+      }
     }
 
     toggle.addEventListener("click", updateState);
-    click_to_close.addEventListener("click", updateState);
+    click_to_close.addEventListener("click", close);
+
+    window.addEventListener('keydown', (e)=> {
+      if (e.key === 'Escape') {
+        close();
+      }
+    })
   }
 
   toggles.forEach((toggle) => handleToggle(toggle));

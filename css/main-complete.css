@@ -1,17 +1,19 @@
 /* CSS Custom Properties AKA Variables */
 :root {
   /* Colors */
-  --color-primary: hsl(218, 14%, 16%);
-  --color-primary--light: hsl(218, 24%, 40%);
-  --color-primary--dark: hsl(218, 8%, 10%);
+  --color-primary: #23272f;
+  --color-primary--light: hsl(from var(--color-primary) h 24% 40%);
+  --color-primary--dark: hsl(from var(--color-primary) h 8% 10%);
+  /* --color-primary--light: hsl(218, 24%, 40%); */
+  /* --color-primary--dark: hsl(218, 8%, 10%); */
 
-  --color-secondary: hsl(95, 38%, 62%);
-  --color-secondary--light: hsl(95, 48%, 75%);
-  --color-secondary--dark: hsl(95, 28%, 42%);
+  --color-secondary: #98c379;
+  --color-secondary--light: hsl(from var(--color-secondary) h 48% 75%);
+  --color-secondary--dark: hsl(from var(--color-secondary) h 28% 42%);
 
-  --color-accent: hsl(355, 59%, 63%);
-  --color-accent--light: hsl(355, 69%, 73%);
-  --color-accent--dark: hsl(355, 38%, 48%);
+  --color-accent: #d86972;
+  --color-accent--light: hsl(from var(--color-accent) h 69% 73%);
+  --color-accent--dark: hsl(from var(--color-accent) h 38% 48%);
 
   --color-grey--100: hsl(0, 0%, 10%);
   --color-grey--200: hsl(0, 0%, 20%);
@@ -237,8 +239,22 @@ textarea:not([rows]) {
 
 .screen-reader-text,
 .srt {
-  position: absolute;
+  position: absolute !important;
   clip-path: polygon(0 0, 0.1% 0, 0.1% 0.1%, 0 0.1%);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
+  color: #000 !important;
+  background-color: #fff !important;
+  /* ---------- prof comment ----------
+  
+  WHAT? PX UNITS?! THAT's ILLEGAL!
+  We are leveraging the fact that the size of px
+  never changes on purpose to make sure it is always
+  as small as possible.
+
+  ---------- end prof comment ---------- */
 }
 
 /* ---------- Typography ---------- */
@@ -425,28 +441,51 @@ small,
 /* Containers */
 
 .container {
-  width: min(100%, var(--container));
+  --container-width: var(--container);
+  width: min(100%, var(--container-width));
   margin: 0 auto;
   padding-inline-start: 1.5rem;
   padding-inline-end: 1.5rem;
 }
 
 .container--text {
-  width: min(100%, var(--container--text));
+  --container-width: var(--container--text);
 }
 
 .container--grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 1.5rem;
-}
 
-.container--grid > * {
-  grid-column: 1 / -1;
+  > * {
+    grid-column: 1 / -1;
+  }
 }
 
 section {
   padding: clamp(3rem, 10vw, 6rem) 0;
+}
+
+/* ---------- Forms ---------- */
+
+label,
+.label {
+  display: block;
+  margin-block: 0 0.25rem;
+  font-weight: 600; 
+}
+
+input:where(
+  :not(
+    [type="radio"],
+    [type="checkbox"]
+  )
+) {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  border: 0.0625rem solid #ddd;
+  border-block-end-color: var(--color-blue);
 }
 
 /* ---------- Patterns/Components ---------- */
@@ -472,18 +511,22 @@ section {
   font-family: inherit;
   font-size: inherit;
 
-  &:is(:hover, :focus) {
+  &:where(:hover, :focus) {
     background-color: var(--color-primary--dark);
     border-color: var(--color-primary--dark);
     color: #fff;
   }
 }
 
+.btn--flat {
+  box-shadow: none;
+}
+
 .btn--secondary {
   background-color: var(--color-secondary);
   border-color: var(--color-secondary);
   color: var(--color-primary);
-  &:is(:hover, :focus) {
+  &:where(:hover, :focus) {
     background-color: var(--color-secondary--dark);
     border-color: var(--color-secondary--dark);
     color: #fff;
@@ -747,6 +790,27 @@ section {
   flex: 1;
 }
 
+.card--full-click {
+  position: relative;
+  &:focus-within {
+    outline: 0.125rem solid var(--color-accent);
+    outline-offset: 0.125rem;
+  }
+
+  .btn {
+    &::before {
+      content: ' ';
+      display: inline-block;
+      position: absolute;
+      inset: 0;
+    }
+
+    &:focus-visible {
+      outline: 0;
+    }
+  }
+}
+
 @media only screen and (min-width: 45em) {
   .card__title {
     font-size: 1.563rem;
@@ -799,6 +863,28 @@ section {
 @media only screen and (min-width: 60em) {
   .accordion__label {
     font-size: 1.333rem;
+  }
+}
+
+/* ---------- Newsletter ---------- */
+
+.newsletter {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  row-gap: 0.75rem;
+
+  h3 {
+    grid-column: 1 / -1;
+  }
+
+  input {
+    border-start-start-radius: var(--radius);
+    border-end-start-radius: var(--radius);
+  }
+
+  .btn {
+    border-start-start-radius: 0;
+    border-end-start-radius: 0;
   }
 }
 
